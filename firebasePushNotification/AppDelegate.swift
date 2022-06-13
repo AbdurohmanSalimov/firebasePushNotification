@@ -10,6 +10,11 @@ import Firebase
 import FirebaseMessaging
 import UserNotifications
 
+private let categoryIdentifier = "AcceptOrReject"
+
+private enum ActionIdentifier: String {
+  case accept, reject
+}
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {

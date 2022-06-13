@@ -1,30 +1,28 @@
 //
 //  NotificationViewController.swift
-//  NContentExtenstion
+//  DoctorNotificationExtencion
 //
-//  Created by Azizbek Salimov on 07.06.2022.
+//  Created by Azizbek Salimov on 11.06.2022.
 //
 
 import UIKit
 import UserNotifications
 import UserNotificationsUI
-import SwiftUI
 
-class NotificationViewController: UIViewController, UNNotificationContentExtension {
+class DoctorNotificationViewController: UIViewController, UNNotificationContentExtension {
+
     
-    @IBOutlet weak var doctorsImageView: UIImageView!
+    @IBOutlet weak var patientImageView: UIImageView!
     
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var informationLbl: UILabel!
-    @IBOutlet weak var doctorNameSurnamelbl: UILabel!
-    @IBOutlet weak var infoEditionalLbl: UILabel!
-    @IBOutlet weak var doctorPhoneLbl: UILabel!
-    @IBOutlet weak var subServiceImg: UIImageView!
-    @IBOutlet weak var timeLbl: UILabel!
-    @IBOutlet weak var dateLbl: UILabel!
-    @IBOutlet weak var statusView: UIView!
-    @IBOutlet weak var statusLbl: UILabel!
+    @IBOutlet weak var patientNameSurnamelbl: UILabel!
+
+    @IBOutlet weak var patientPhoneLbl: UILabel!
+  
+    @IBOutlet weak var acceptanceBtn: UIButton!
+    @IBOutlet weak var rejectionBtn: UIButton!
     
     var info = ""
     override func viewDidLoad() {
@@ -43,23 +41,23 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
 //        dateLbl.text = userInfo["meetingDay"] as! String
 //        infoEditionalLbl.text = "at"
 //        timeLbl.text = userInfo["meetingTime"] as! String
-        doctorNameSurnamelbl.text = userInfo["ownerName"] as! String
-        doctorPhoneLbl.text = userInfo["phone"] as! String
+        patientNameSurnamelbl.text = userInfo["ownerName"] as! String
+        patientPhoneLbl.text = userInfo["phone"] as! String
         getImage(imageM: logoImage, key: (userInfo["logo"] as! String))
-        getImage(imageM: doctorsImageView, key: (userInfo["userImg"] as! String))
-        getImage(imageM: subServiceImg, key: (userInfo["subServiceImg"] as! String))
+        getImage(imageM: patientImageView, key: (userInfo["userImg"] as! String))
         
         
-        if userInfo["accepted"] as! String == "true" {
-            info =  "Hello \(userInfo["name"] as! String), Dr. \(userInfo["ownerName"] as! String) has booked you for the reception on "
-            statusView.backgroundColor = #colorLiteral(red: 0, green: 0.9281212687, blue: 0.5735446811, alpha: 1)
-            statusLbl.text = "You have been accepted!"
-        } else {
-            info =  "Hello \(userInfo["name"] as! String), Dr. \(userInfo["ownerName"] as! String) has not booked you for the reception on "
-            statusView.backgroundColor = #colorLiteral(red: 0.6353749633, green: 0, blue: 0.2125297487, alpha: 1)
-            statusLbl.text = "You were not accepted!"
-        }
-        setMessageText(textBold: (userInfo["meetingDay"] as! String) + "  " + (userInfo["meetingTime"] as! String), textRegular: info, lbl: informationLbl)
+//        
+//        if userInfo["accepted"] as! String == "true" {
+//            info =  "Hello \(userInfo["name"] as! String), Dr. \(userInfo["ownerName"] as! String) has booked you for the reception on "
+//            statusView.backgroundColor = #colorLiteral(red: 0, green: 0.9281212687, blue: 0.5735446811, alpha: 1)
+//            statusLbl.text = "You have been accepted!"
+//        } else {
+//            info =  "Hello \(userInfo["name"] as! String), Dr. \(userInfo["ownerName"] as! String) has not booked you for the reception on "
+//            statusView.backgroundColor = #colorLiteral(red: 0.6353749633, green: 0, blue: 0.2125297487, alpha: 1)
+//            statusLbl.text = "You were not accepted!"
+//        }
+//        setMessageText(textBold: (userInfo["meetingDay"] as! String) + "  " + (userInfo["meetingTime"] as! String), textRegular: info, lbl: informationLbl)
     
 //        if userInfo["accepted"] as! String == "true" {
 //            informationLbl.text =  "Hello \(userInfo["name"] as! String), Dr. \(userInfo["ownerName"] as! String) has booked you for the reception on "
@@ -123,3 +121,4 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
     
     
 }
+

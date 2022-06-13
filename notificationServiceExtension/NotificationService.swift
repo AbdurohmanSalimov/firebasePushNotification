@@ -29,6 +29,8 @@ class NotificationService: UNNotificationServiceExtension {
        bestAttemptContent.body = "body -  \(bestAttemptContent.body) "
         if bestAttemptContent.title == "client" {
             bestAttemptContent.categoryIdentifier = "client"
+        } else {
+            bestAttemptContent.categoryIdentifier = "owner"
         }
      
        // let imageURLString = bestAttemptContent.userInfo["q1"] as? String
